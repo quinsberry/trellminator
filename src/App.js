@@ -1,9 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Panel } from './components/Panel';
 
 function App() {
   return (
-    <h2>helo</h2>
+    <div className="app">
+      <Panel cards={[
+        { text: 'alo blyad' },
+        { text: 'alo blyad_2' },
+        { text: 'alo blyad_3' },
+        { text: 'alo blyad_4' },
+      ]} />
+      <Panel cards={null} />
+    </div>
   );
 }
 
