@@ -7,7 +7,7 @@ import './AddForm.scss';
 import closeSvg from '../../assets/close.svg';
 import addSvg from '../../assets/add.svg';
 
-export const AddForm = ({ children }) => {
+export const AddForm = ({ children, isEmptyPanel }) => {
   const [showForm, setShowForm] = useState(false);
   const textareaRef = useRef(null);
 
@@ -22,9 +22,9 @@ export const AddForm = ({ children }) => {
       {showForm ? (
         <div className="add-form">
           <div className="add-form__input">
-            <Card><textarea placeholder="Enter the card name" ref={textareaRef} rows="3"></textarea></Card>
+            <Card><textarea placeholder={isEmptyPanel ? "Enter the column name" : "Enter the card name"} ref={textareaRef} rows="3"></textarea></Card>
             <div className="add-form__bottom">
-              <Button>Add card</Button>
+              <Button>{isEmptyPanel ? "Add a column" : "Add a card"}</Button>
               <img onClick={setShowForm.bind(this, false)} src={closeSvg} alt="Close svg icon" />
             </div>
           </div>
@@ -33,7 +33,7 @@ export const AddForm = ({ children }) => {
           <div className="add-form__bottom">
             <div onClick={setShowForm.bind(this, true)} className="add-form__bottom-add-btn">
               <img src={addSvg} alt="Add svg icon" />
-              <span>Add one more card</span>
+              <span>{isEmptyPanel ? 'Add one more column' : 'Add one more card'}</span>
             </div>
           </div>
         )}

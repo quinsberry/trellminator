@@ -9,25 +9,27 @@ import './Panel.scss';
 
 
 
-export const Panel = ({ cards }) => {
+export const Panel = ({ title, cards }) => {
   return (
     <div className={classNames('panel', { 'panel--empty': !cards })}>
+      {title && <div className="panel__title">{title}</div>}
       {cards && (
         <div className="panel__items">
           {cards.map((card, index) => (
             <Card key={index}>
-              {card.text}
+              {card}
             </Card>
           ))}
         </div>
       )}
-      <AddForm />
+      <AddForm isEmptyPanel={!cards} />
     </div>
   );
 };
 
 Panel.propTypes = {
-  text: PropTypes.string.isRequired,
+  cards: PropTypes.node,
+  title: PropTypes.string,
 }
 
 export default Panel;
