@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { Card } from '../'
 import { AddForm } from '../'
 
+import { makeValidIndex } from '../../utils/helpers'
+
 import './Column.scss'
 import closeSvg from '../../assets/close.svg'
 
@@ -27,7 +29,7 @@ export const Panel = ({ panelIdx, title, cards, onAddColumn, onAddCard, onDelete
             )}
             <div className="column__items">
               {cards.map((card, idx) => (
-                <Card key={`${idx}-${card}`}>{card}</Card>
+                <Card key={makeValidIndex(idx, card)}>{card}</Card>
               ))}
             </div>
             <AddForm panelIdx={panelIdx} onAddColumn={onAddColumn} onAddCard={onAddCard} />

@@ -1,4 +1,5 @@
 import { useLocalStorage } from '../../hooks'
+import { makeValidIndex } from '../../utils/helpers'
 
 const GET_DATA_LS = 'columns/GET_DATA_LS'
 const CARDS_ADD = 'columns/CARDS_ADD'
@@ -57,7 +58,7 @@ export default (state = initialState, action) => {
       const { panelIdx, text } = action.payload
 
       const newState = state.map((obj, idx) =>
-        panelIdx === idx ? { ...obj, cards: [...obj.cards, text] } : obj,
+        panelIdx === makeValidIndex(idx, obj.title) ? { ...obj, cards: [...obj.cards, text] } : obj,
       )
       useLocalStorage(newState)
       return newState
@@ -68,7 +69,7 @@ export default (state = initialState, action) => {
       return newState
     }
     case COLUMN_DELETE: {
-      const newState = state.filter((obj, idx) => `${idx}-${obj.title}` !== action.payload)
+      const newState = state.filter((obj, idx) => makeValidIndex(idx, obj.title) !== action.payload)
       useLocalStorage(newState)
       return newState
     }

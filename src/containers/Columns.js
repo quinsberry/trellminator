@@ -1,8 +1,11 @@
 import React, { useEffect, useCallback } from 'react'
-import { Column } from '../components'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { actions as columnsActions } from '../store/reducers/columns'
+
+import { Column } from '../components'
+
+import { makeValidIndex } from '../utils/helpers'
 
 const Panels = () => {
   const dispatch = useDispatch()
@@ -33,7 +36,7 @@ const Panels = () => {
         <Column
           key={`${idx}-${item.title}`}
           {...item}
-          panelIdx={`${idx}-${item.title}`}
+          panelIdx={makeValidIndex(idx, item.title)}
           onAddColumn={addColumnDispatch}
           onAddCard={addCardDispatch}
           onDeleteColumn={deleteColumnDispatch}
