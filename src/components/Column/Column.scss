@@ -1,0 +1,43 @@
+.column {
+  width: 272px;
+  margin: 0 4px;
+  border-radius: 3px;
+  border: 1px solid darken(#dfe3e6, 2%);
+  background: #dfe3e6;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+
+  &__inner {
+    position: relative;
+    display: flex;
+    max-height: calc(100vh - 40px);
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #dfe1e6;
+    flex-direction: column;
+    white-space: normal;
+    overflow: hidden;
+  }
+
+  &__title {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &--empty {
+    .add-form {
+      padding-top: 0px;
+      margin-top: 12px;
+    }
+  }
+
+  &__items {
+    padding: 0 12px 0 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}

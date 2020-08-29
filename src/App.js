@@ -1,14 +1,12 @@
-import React from 'react';
-import Panels from './containers/Panels'
+import React from 'react'
+import Columns from './containers/Columns'
 
 function App() {
   return (
     <div className="app">
-      <Panels />
+      <Columns />
     </div>
-  );
+  )
 }
 
-export default App;
-
-
+export default App
